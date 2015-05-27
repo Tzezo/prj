@@ -11,6 +11,7 @@ app.factory('authService',
                 };
 
                 $http(request).success(function(data) {
+                    data.username = userData.username;
                     sessionStorage['currentUser'] = JSON.stringify(data);
                     success(data);
                 }).error(error);

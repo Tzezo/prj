@@ -17,6 +17,11 @@ app.config(function ($routeProvider) {
         controller: 'RegisterController'
     });
 
+    $routeProvider.when('/home', {
+        templateUrl: 'templates/home.html',
+        controller: 'HomeController'
+    });
+
     $routeProvider.otherwise(
         { redirectTo: '/' }
     );
