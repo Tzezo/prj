@@ -1,83 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" ng-controller="AppController">
 <head lang="en">
     <meta charset="UTF-8">
     <title>Social Network</title>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css" />
+    <link type="text/css" rel="stylesheet" href="css/app.css" />
 </head>
 <body>
 
+<header id="app-header">
+    <div ng-include="'templates/partial/header.html'"></div>
+</header>
 
 <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-8">
-        <h1>Social Network</h1>
-        <div class="col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                           <label for="username">Username</label>
-                           <input type="username" class="form-control" id="username" placeholder="Enter Username">
-                        </div>
-                        <div class="form-group">
-                           <label for="password">Password</label>
-                           <input type="password" class="form-control" id="password" placeholder="Enter Password">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-6">
-            <div class="panel panel-primary">
-                <div class="panel-heading">Register</div>
-                <div class="panel-body">
-                    <form>
-                        <div class="form-group">
-                          <label for="username">Username</label>
-                          <input type="username" class="form-control" id="username" placeholder="Enter Username">
-                        </div>
-                        <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password" class="form-control" id="password" placeholder="Enter Password">
-                        </div>
-                        <div class="form-group">
-                          <label for="confirm_password">Confirm Password</label>
-                          <input type="password" class="form-control" id="confirm_password" placeholder="Confirm Password">
-                        </div>
-                        <div class="form-group">
-                          <label for="name">Name</label>
-                          <input type="name" class="form-control" id="name" placeholder="Enter Name">
-                        </div>
-                        <div class="form-group">
-                          <label for="email">Email address</label>
-                          <input type="email" class="form-control" id="email" placeholder="Enter Email">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="gender">Gender</label><br />
-                          <label class="radio-inline">
-                            <input type="radio" name="gender" id="male" value="male"> Male
-                          </label>
-                          <label class="radio-inline">
-                            <input type="radio" name="gender" id="female" value="female"> Female
-                          </label>
-                          <label class="radio-inline">
-                            <input type="radio" name="gender" id="other" value="other"> Other
-                          </label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-2"></div>
+    <div class="col-md-5 col-md-offset-3" ng-view></div>
 </div>
+
+<footer id="app-footer">
+    <div class="col-md-offset-3">
+        &copy; 2014 by Social Network, No Rights Reserved
+    </div>
+</footer>
+
+<!-- Load app libraries -->
+<script type="text/javascript" src="lib/angular/angular.js"></script>
+<script type="text/javascript" src="lib/angular/angular-route.js"></script>
+<script type="text/javascript" src="lib/angular/angular-resource.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery-2.1.3.js"></script>
+<script type="text/javascript" src="lib/jquery.noty/jquery.noty.js"></script>
+<script type="text/javascript" src="lib/bootstrap/bootstrap-3.1.1.js"></script>
+<script type="text/javascript" src="lib/ui.bootstrap/ui.bootstrap.pagination-0.12.0.js"></script>
+
+<!-- Load app source code: main script, services, controllers, etc. -->
+<script type="text/javascript" src="js/app.js"></script>
+
+<script type="text/javascript" src="js/services/authService.js"></script>
+<script type="text/javascript" src="js/services/notifyService.js"></script>
+<script type="text/javascript" src="js/services/userService.js"></script>
+
+<script type="text/javascript" src="js/controllers/AppController.js"></script>
+<script type="text/javascript" src="js/controllers/HomeController.js"></script>
+<script type="text/javascript" src="js/controllers/LoginController.js"></script>
+<script type="text/javascript" src="js/controllers/RegisterController.js"></script>
+
 </body>
 </html>
