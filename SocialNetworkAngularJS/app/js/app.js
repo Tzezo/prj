@@ -3,7 +3,8 @@
 var app = angular.module('app', ['ngRoute', 'ngResource', 'ui.bootstrap.pagination']);
 
 app.constant('baseServiceUrl', 'http://softuni-social-network.azurewebsites.net');
-app.constant('pageSize', 2);
+//app.constant('pageSize', 2);
+app.constant('defaultAvatar', 'img/default_avatar.jpg')
 
 app.config(function ($routeProvider) {
 
