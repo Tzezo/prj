@@ -2,7 +2,7 @@
 
 // The AppController holds the presentation logic for the entire app (common all screens)
 app.controller('UserController',
-    function ($scope, $location, authService, notifyService, userService) {
+    function ($scope, $location, defaultAvatar, authService, notifyService, userService) {
 
         var ClearData = function() {
             $scope.loginData = "";
@@ -12,6 +12,7 @@ app.controller('UserController',
         };
 
         $scope.userData = authService.getCurrentUser();
+        $scope.defaultAvatar = defaultAvatar;
 
         $scope.changePassword = function() {
           userService.ChangePassword($scope.userData,
@@ -30,7 +31,7 @@ app.controller('UserController',
                function(serverData) {
                    notifyService.showInfo("Successful Profile Edit!");
                    ClearData();
-                   
+
                    $location.path('/');
                },
                function(serverError) {
@@ -72,6 +73,22 @@ app.controller('UserController',
               reader.readAsDataURL(file);
           } else {
               notifyService.showError("Wrong file format");
+          }
+      };
+
+
+      $scope.searchUsersByName = function() {
+          console.log($scope.keywords)
+          if ($scope.keywords) {
+              userService.SearchUsersByName($scope.keywords,
+                  function(serverData) {
+                      $scope.responseUsers = serverData;
+                  },
+                  function(serverError) {
+                      $scope.responseUsers = [];
+                  });
+          } else {
+              $scope.responseUsers = [];
           }
       };
 
