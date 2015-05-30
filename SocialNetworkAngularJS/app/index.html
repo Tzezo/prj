@@ -6,19 +6,20 @@
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css" />
     <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.css" />
     <link type="text/css" rel="stylesheet" href="css/app.css" />
+    <link type="text/css" rel="stylesheet" href="lib/UI-Icon-master/icon.css"
 </head>
 <body>
 
 <header id="app-header">
-    <div ng-include="'templates/partial/header.html'"></div>
+    <div class="col-md-8 col-md-offset-2" ng-include="'templates/partial/header.html'"></div>
 </header>
 
 <div class="row">
-    <div class="col-md-5 col-md-offset-3" ng-view></div>
+    <div class="col-md-8 col-md-offset-2" ng-view></div>
 </div>
 
 <footer id="app-footer">
-    <div class="col-md-offset-3">
+    <div class="col-md-8 col-md-offset-2">
         &copy; 2014 by Social Network, No Rights Reserved
     </div>
 </footer>
@@ -40,9 +41,10 @@
 <script type="text/javascript" src="js/services/userService.js"></script>
 
 <script type="text/javascript" src="js/controllers/AppController.js"></script>
-<script type="text/javascript" src="js/controllers/HomeController.js"></script>
+<!-- <script type="text/javascript" src="js/controllers/HomeController.js"></script> -->
 <script type="text/javascript" src="js/controllers/LoginController.js"></script>
 <script type="text/javascript" src="js/controllers/RegisterController.js"></script>
+<script type="text/javascript" src="js/controllers/LogoutController.js"></script>
 
 </body>
 </html>
