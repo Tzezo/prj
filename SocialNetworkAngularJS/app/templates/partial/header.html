@@ -18,10 +18,10 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" style="padding: 0px 15px;" href="#">
-          <img src="img/default_avatar.jpg" class="img-circle" style="width: 50px;" />
+          <img src="{{authService.getCurrentUser().profileImageData}}" class="img-circle" style="width: 50px; height: 50px" />
         </a>
         <a class="navbar-brand" href="#">
-          <span>{{authService.getCurrentUser().username}}</span>
+          <span>{{authService.getCurrentUser().username}} {{authService.getCurrentUser().loginData.profileImageData}}</span>
         </a>
       </div>
 
@@ -30,7 +30,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#"><i class="large comments icon"></i></a></li>
           <li><a href="#"><i class="large users icon"></i></a></li>
-          <li><a href="#"><i class="large settings icon"></i></a></li>
+          <li><a href="#/user/profile"><i class="large settings icon"></i></a></li>
           <li><a href="#/user/password"><i class="large privacy icon"></i></a></li>
           <li><a href="#/logout" class="cursor-pointer"><i class="large sign out icon"></i></a></li>
         </ul>
