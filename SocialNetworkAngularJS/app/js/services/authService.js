@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('authService',
-    function ($http, baseServiceUrl) {
+    function ($http, baseServiceUrl, defaultAvatar) {
         return {
             login: function(userData, success, error) {
                 var request = {
@@ -25,7 +25,7 @@ app.factory('authService',
 
                             if(!currentUserData.profileImageData)
                             {
-                                currentUserData.profileImageData = 'img/default_avatar.jpg';
+                                currentUserData.profileImageData = defaultAvatar;
                             }
                             sessionStorage['currentUserData'] = JSON.stringify(currentUserData);
                             success(data);
