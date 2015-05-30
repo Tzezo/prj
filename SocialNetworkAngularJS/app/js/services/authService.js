@@ -10,10 +10,28 @@ app.factory('authService',
                     data: userData
                 };
 
+                var authServiceThis = this;
+
                 $http(request).success(function(data) {
+
                     data.username = userData.username;
                     sessionStorage['currentUser'] = JSON.stringify(data);
-                    success(data);
+
+                    $http.get(baseServiceUrl + '/api/me', {
+                            headers: authServiceThis.getAuthHeaders()
+                        })
+                        .success(function(currentUserData, status, headers, config) {
+                            currentUserData.loginData = data;
+
+                            if(!currentUserData.profileImageData)
+                            {
+                                currentUserData.profileImageData = 'img/default_avatar.jpg';
+                            }
+                            sessionStorage['currentUserData'] = JSON.stringify(currentUserData);
+                            success(data);
+
+                        }).error(error);
+
                 }).error(error);
             },
 
@@ -34,9 +52,12 @@ app.factory('authService',
             },
 
             getCurrentUser : function() {
-                var userObject = sessionStorage['currentUser'];
+                var userObject = sessionStorage['currentUserData'];
                 if (userObject) {
-                    return JSON.parse(sessionStorage['currentUser']);
+                    var obj = JSON.parse(sessionStorage['currentUserData']);
+                    obj.loginData = JSON.parse(sessionStorage['currentUser']);
+
+                    return obj;
                 }
             },
 
@@ -61,8 +82,9 @@ app.factory('authService',
             getAuthHeaders : function() {
                 var headers = {};
                 var currentUser = this.getCurrentUser();
-                if (currentUser) {
-                    headers['Authorization'] = 'Bearer ' + currentUser.access_token;
+
+                if (currentUser.loginData) {
+                    headers['Authorization'] = 'Bearer ' + currentUser.loginData.access_token;
                 }
                 return headers;
             }
