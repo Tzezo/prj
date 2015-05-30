@@ -7,10 +7,18 @@ app.controller('LoginController',
             $location.path("/home");
         }
 
+        var ClearData = function() {
+            $scope.loginData = "";
+            $scope.registerData = "";
+            $scope.userData = "";
+            $scope.passwordData = "";
+        };
+
         $scope.login = function(userData) {
             authService.login(userData,
                 function success() {
                     notifyService.showInfo("Login successful");
+                    ClearData();
                     $location.path("/home");
                 },
                 function error(err) {
