@@ -1,0 +1,54 @@
+<div class="col-md-12" ng-controller="UserController">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Edit User Profile</div>
+        <div class="panel-body">
+
+            <form name="editProfileForm" ng-submit="editUser()">
+                <div class="well col-md-4">
+                    <div class="fileinput-preview thumbnail col-md-12" id="avatarImage" style="height: 150px;">
+                        <img ng-src="{{userData.profileImageData}}" style="height: 100%; width: auto;" />
+                    </div>
+                    <div>
+                        <h5>Allowed format: .jpg</h5>
+                        <h5>Limit: 128kb</h5>
+                        <span onclick="document.getElementById('addAvatarImage').click(); return false;" class="btn btn-default btn-file col-md-6 col-md-offset-3" >Upload</span>
+                        <input type="file" class="form-control" id="addAvatarImage" name="addAvatarImage" style="display: none;" onchange="angular.element(this).scope().addImage(this.id, '#avatarImage img')">
+                    </div>
+                </div>
+                <div class="well col-md-7 col-md-offset-1">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" class="form-control" ng-model="userData.name" placeholder="{{userData.name}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" id="email" class="form-control" ng-model="userData.email" placeholder="{{userData.email}}">
+                    </div>
+                    <label for="gender-form-group">Gender</label>
+                    <div class="form-group" id="gender-form-group">
+                        <input type="radio" name="gender" value="2" ng-model="userData.gender" >
+                        <label for="gender">Male</label>
+                        <input type="radio" name="gender" value="1" ng-model="userData.gender" >
+                        <label for="gender">Female</label>
+                        <input type="radio" name="gender" value="0" ng-model="userData.gender" >
+                        <label for="gender">Other</label>
+                    </div>
+                    <div class="fileinput-preview thumbnail col-md-12" id="coverImage" style="height: 150px;">
+                        <img ng-src="{{userData.coverImageData}}" style="height: 100%; width: auto;" />
+                    </div>
+                    <div>
+                        <h5>Limit: 1024kb</h5>
+                        <span onclick="document.getElementById('addCoverImage').click(); return false;" class="btn btn-default btn-file col-md-6 col-md-offset-3" >Upload</span>
+                        <input type="file" class="form-control" id="addCoverImage" name="addCoverImage" style="display: none;" onchange="angular.element(this).scope().addImage(this.id, '#coverImage img')">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary col-md-5">Save changes</button>
+                        <a href="/#/user/home" class="btn btn-danger col-md-5 col-sm-offset-2">Cancel</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
