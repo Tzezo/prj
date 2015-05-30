@@ -14,5 +14,24 @@ app.factory('userService', function($http, baseServiceUrl, authService) {
             }).error(error);
     };
 
+    service.EditUserProfile = function(editUserData, success, error) {
+        $http.put(userServiceUrl, editUserData, {
+               headers: authService.getAuthHeaders()
+           })
+           .success(function(data, status, headers, config) {
+               sessionStorage['currentUserData'] = JSON.stringify(config.data);
+               success(data);
+           }).error(error);
+    };
+
+    service.GetCurrentUserData = function(success, error) {
+        $http.get(userServiceUrl, {
+                headers: authService.getAuthHeaders()
+            })
+            .success(function(data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
+
     return service;
 });
