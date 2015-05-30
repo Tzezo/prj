@@ -42,5 +42,14 @@ app.factory('userService', function($http, baseServiceUrl, authService) {
             }).error(error);
     };
 
+    service.GetUserByUsername = function(username, success, error) {
+        $http.get(baseServiceUrl + '/api/users/' + username, {
+                headers: authService.getAuthHeaders()
+            })
+            .success(function(data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
+
     return service;
 });
