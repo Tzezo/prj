@@ -24,11 +24,16 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when('/home', {
         templateUrl: 'templates/home.html',
-        controller: 'HomeController'
+        controller: 'UserController'
     });
 
     $routeProvider.when('/user/password', {
         templateUrl: 'templates/user/change-password.html',
+        controller: 'UserController'
+    });
+
+    $routeProvider.when('/user/profile', {
+        templateUrl: 'templates/user/edit-user-profile.html',
         controller: 'UserController'
     });
 
