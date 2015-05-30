@@ -33,5 +33,14 @@ app.factory('userService', function($http, baseServiceUrl, authService) {
             }).error(error);
     };
 
+    service.SearchUsersByName = function(name, success, error) {
+        $http.get(baseServiceUrl + '/api/users/search?searchTerm=' + name, {
+                headers: authService.getAuthHeaders()
+            })
+            .success(function(data, status, headers, config) {
+                success(data);
+            }).error(error);
+    };
+
     return service;
 });
