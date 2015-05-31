@@ -25,17 +25,22 @@ app.config(function ($routeProvider) {
 
     $routeProvider.when('/home', {
         templateUrl: 'templates/home.html',
-        controller: 'UserController'
+        controller: 'ProfileController'
     });
 
-    $routeProvider.when('/user/password', {
+    $routeProvider.when('/profile/password', {
         templateUrl: 'templates/user/change-password.html',
-        controller: 'UserController'
+        controller: 'ProfileController'
     });
 
-    $routeProvider.when('/user/profile', {
+    $routeProvider.when('/profile', {
         templateUrl: 'templates/user/edit-user-profile.html',
-        controller: 'UserController'
+        controller: 'ProfileController'
+    });
+
+    $routeProvider.when('/users/:username', {
+        templateUrl: 'templates/user/wall.html',
+        controller: 'UsersController'
     });
 
     $routeProvider.otherwise(
