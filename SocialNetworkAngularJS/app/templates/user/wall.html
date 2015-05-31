@@ -1,0 +1,20 @@
+<div ng-if="authService.isLoggedIn()" class="user-area col-md-12" >
+    <div class="panel panel-default">
+        <div class="panel-body" style="overflow: hidden; height: 200px; padding: 0px">
+          <img src="{{userData.coverImageData}}" />
+          <!-- <img src="{{userData.profileImageData}}" style="width: 150px"/> -->
+          Basic panel example
+        </div>
+        <div class="panel-body">
+            <div class="col-sm-4 col-md-3" style="margin-top: -135px">
+                <div class="thumbnail">
+                  <img src="{{userData.profileImageData}}"/>
+                </div>
+            </div>
+
+            <div class="col-sm-4 col-md-3" style="margin-top: -135px; color: white">
+                <h2>{{userData.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
